@@ -1,7 +1,6 @@
+use clap::Parser;
 use core::fmt;
 use std::str::FromStr;
-
-use clap::Parser;
 
 use super::verify_input_file;
 
