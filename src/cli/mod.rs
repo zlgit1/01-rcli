@@ -4,7 +4,7 @@ mod genpass;
 mod text;
 use self::{csv::CsvOpts, genpass::GenpassOpts};
 use clap::Parser;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub use self::{
     base64::{Base64Format, Base64Subcommand},
@@ -32,6 +32,15 @@ pub enum Subcommand {
 fn verify_input_file(filename: &str) -> Result<String, &'static str> {
     if filename == "-" || Path::new(filename).exists() {
         Ok(filename.into())
+    } else {
+        Err("File does not exist")
+    }
+}
+
+fn verify_path(path: &str) -> Result<PathBuf, &'static str> {
+    let p = Path::new(path);
+    if p.exists() && p.is_dir() {
+        Ok(path.into())
     } else {
         Err("File does not exist")
     }
