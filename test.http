@@ -1,2 +1,5 @@
 ### test index
-GET http://localhost:8080/Cxxx.toml
+GET http://localhost:8080/Cargo.toml
+Range: bytes=0-
+###
+GET http://localhost:8080/tower/fixture/ed25519.pk
